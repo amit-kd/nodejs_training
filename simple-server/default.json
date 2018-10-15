@@ -1,0 +1,34 @@
+{
+  "result": {
+    "alias": "bcpartner1_key.p12",
+    "creationDate": null,
+    "dn": "cn=Trading Partner One,ou=BusinessConnect Server (only for TEST purposes),o=TIBCO Software Inc.,l=Palo Alto, st=California,c=US serial #7a3ed2ea20",
+    "encryptionAlgorithm": 0,
+    "encryptionKeyFingerprint": "",
+    "encryptionKeyID": "",
+    "encryptionKeyLength": 0,
+    "expiryDate": {
+      "date": 31,
+      "day": 2,
+      "hours": 10,
+      "minutes": 52,
+      "month": 11,
+      "seconds": 13,
+      "time": 1735671133000,
+      "timezoneOffset": 480,
+      "year": 124
+    },
+    "password": "IRbb9HE1NlLhs+HyIQ1jQ8Fg9FfC+hxnAgSCfUKB7xPe1xNUDKF/w==",
+    "priCredContent": "MIIOQQIBAzCCDgcGCSqGSIb3DQEHAaCCDfgEgg30MIIN8DCCAukGCSqGSIb3DQEHAaCCAtoEggLWMIIC0jCCAs4GCyqGSIb3DQEM CgECoIICpjCCAqIwHAYKKoZIhvcNAQwBAzAOBAh/g3eJa5dMVQICB9AEggKAmwKc9/j/bZjAkGauBJo1yYeWOYsbB2iq6FDe0o+/HitTzIiWPJyLfOnO4G Y6me2qtcXF6d7Yx6qN3W3xkGbLiUeYQtnnxMFtnkD1+DRqWKIXmo1r8loTZntyKPdenVPkmFri06Nmdc7zDyRIkncz9nmZT/+iJHkGvQsdtbDT+hrLz1yD zeyqX7YUdCavkToQ5W9S57lVxn4ajKup8Xr+=",
+    "pubCredContent": "",
+    "shadowExpiryDate": null,
+    "shadowName": "",
+    "signingAlgorithm": 0,
+    "signingKeyFingerprint": "",
+    "signingKeyID": "",
+    "signingKeyLength": 0,
+    "type": "KCRED",
+    "updatedFileName": "bcpartner1_key.p12",
+    "userID": ""
+  }
+}
