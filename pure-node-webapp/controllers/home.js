@@ -1,6 +1,7 @@
 // DEPENDENCIES
 const template = require("../views/template.js");
 const { employee } = require("../model/default.js");
+// SIMPLE SETUP FOR TYPES OF API CALLS MADE FROM NODE JS
 const { getHttpCall, 
         getRequestCall, 
         getModeFetchCall,
@@ -9,9 +10,6 @@ const { getHttpCall,
 
 exports.get = function(request, response){
     response.writeHead(200, {'Content-type': 'text/html'});
-
-    getAxiosCall()
-
     let HTML_TITLE = "Node Fest : home";
     let CONTENT = "";
     CONTENT+=`<div class='divFullWidth'>`;
