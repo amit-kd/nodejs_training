@@ -1,11 +1,15 @@
+
+//  NATIVE MODULES FROM NODE JS
 const http =  require("http");
 const path= require("path");
 const fs= require("fs");
 
-var HOSTNAME = 'localhost';
-var PORT = 5001;
+// USER DEFINED CONSTANTS
+const HOSTNAME = 'localhost';
+const PORT = 5001;
 
-var getFile = function(url, cType, res){
+// READS FILE WITH RESPECTIVE MIME TYPE AND RENDERS THE CONTENT WITH HEADER, CONTENTS & ENDS THE RESPONSE 
+const getFile = function(url, cType, res){
     var file = path.join(__dirname,url);
     fs.readFile(file,(err,content)=>{
         if(err){
@@ -19,8 +23,8 @@ var getFile = function(url, cType, res){
         } 
     })
 };
-
-var getMimeType = function (url) {
+// DETERMINES THE MIME TYPE BY THE URL HIT BY USER
+const getMimeType = function (url) {
     switch(path.extname(url)) {
         case '.html': 
             return 'text/html';
@@ -37,11 +41,11 @@ var getMimeType = function (url) {
             return 'image/gif';
         case '.json': 
             return 'application/json';
-        default: return 'application/octate-stream'
+        default: return 'application/octet-stream'
     }
 }
-
-var server = http.createServer(function(request, response) {
+// CREATES A SERVER WITH HTTP MODULE
+const server = http.createServer(function(request, response) {
     let requestUrl = request.url;
     let requestContentType = getMimeType(request.url);
     
@@ -52,10 +56,11 @@ var server = http.createServer(function(request, response) {
     }
 });
 
-server.listen(PORT, HOSTNAME, (err) => {
-    if(err){
-        console.log("ERROR OCCURED");
-    }else{
-        console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
-    }
+// LISTENS TO THE SERVER USER DEFINED PORT AND HOSTNAME
+server.listen(PORT, HOSTNAME, function() {
+    console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
+});
+// ERROR HANDLING IS ANY ERROR WHILE STARTING SERVER
+server.on("error",function(err) {
+    console.log(`Errot occured  due to ${err.message}`);
 });

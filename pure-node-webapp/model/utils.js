@@ -1,11 +1,13 @@
+
+// DEPENDENCY
 const http = require("http");
 const request = require("request");
 const fetch = require("node-fetch");
 const r2 = require("r2");
 const axios = require("axios");
 
-const URL = "http://gharajavan.com/api/latest_recipe_type/2?apikey=gharajavan-2018";
-
+// REPLACE BY ANY RESTFULL API FOR DEMO
+const URL = "";
 
 function getHttpCall() {
     http.get(URL, res=>{
@@ -28,7 +30,6 @@ function getRequestCall() {
         console.log(body);
     });
 }
-
 
 const getModeFetchCall = async (url=URL) => {
     try {   

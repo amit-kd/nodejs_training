@@ -1,3 +1,7 @@
+/**
+ *   COMMON TEMPLATE MODULE TO BE REFFERED TO RENDER CONTENT BUILT IN REPECTIVE ROUTE CONTROLLER
+ */
+
 exports.build = function(title, content){
     return [
         '<!doctype html>',

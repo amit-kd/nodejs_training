@@ -1,7 +1,7 @@
 {
-  "name": "simple-server",
+  "name": "pure-node-webapp",
   "version": "1.0.0",
-  "description": "creating simple server with node-js",
+  "description": "creating simple MVC structure with node-js",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

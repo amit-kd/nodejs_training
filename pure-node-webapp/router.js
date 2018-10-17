@@ -6,24 +6,24 @@ const url= require("url");
 const home = require('./controllers/home'); 
 const login = require('./controllers/login'); 
 
-// GET FILE
-var getFile = (url, cType, response) => {
-    fs.readFile(__dirname+url, (err,content)=>{
+// READS FILE WITH RESPECTIVE MIME TYPE AND RENDERS THE CONTENTS & ENDS THE RESPONSE
+const getFile = function(url, cType, res){
+    var file = path.join(__dirname,url);
+    fs.readFile(file,(err,content)=>{
         if(err){
-            response.writeHead(404);
-            response.write(`file not found`);
-            response.end();
+            res.writeHead(404);
+            res.write(`file not found`);
+            res.end();
         }else{
-            response.writeHead(200, {'Content-type':cType});
-            response.write(content);
-            response.end();
+            res.writeHead(200, {'Content-type':cType});
+            res.write(content);
+            res.end();
         } 
     })
 };
 
 // TRANSFER ROUTES
-var renderRoute = (req, res) => {
-
+const renderRoute = (req, res) => {
     switch(req.url){
         case '/login': 
             login.get(req, res)
@@ -36,8 +36,8 @@ var renderRoute = (req, res) => {
     }
 };
 
-// GET FILE MIMETYPE
-var getMimeType = (url) => {
+// DETERMINES THE MIME TYPE BY THE URL HIT BY USER
+const getMimeType = function (url) {
     switch(path.extname(url)) {
         case '.html': 
             return 'text/html';
@@ -54,26 +54,25 @@ var getMimeType = (url) => {
             return 'image/gif';
         case '.json': 
             return 'application/json';
-        default: return 'application/octate-stream'
+        default: return 'application/octet-stream'
     }
 }
 
 // ROUTES
 exports.get = (request,response) => {
-    let reqUrl = url.parse(request.url, true);
-    let path = reqUrl.pathname;
-    let requestUrl = request.url;
-    let requestContentType = getMimeType(requestUrl);
+    let parseUrlData = url.parse(request.url, true);
+    let parseUrlDataPath = parseUrlData.pathname;
+    let requestContentType = getMimeType(request.url);
 
     switch(true){
-        case (/.(css)$/.test(path.toLocaleLowerCase())) : 
-        case (/.(js)$/.test(path.toLocaleLowerCase())) : 
-        case (/.(jpg)$/.test(path.toLocaleLowerCase())) : 
-        case (/.(png)$/.test(path.toLocaleLowerCase())) : 
-        case (/.(gif)$/.test(path.toLocaleLowerCase())) : 
-            getFile(requestUrl, requestContentType, response);
+        case (/.(css)$/.test(parseUrlDataPath.toLocaleLowerCase())) : 
+        case (/.(js)$/.test(parseUrlDataPath.toLocaleLowerCase())) : 
+        case (/.(jpg)$/.test(parseUrlDataPath.toLocaleLowerCase())) : 
+        case (/.(png)$/.test(parseUrlDataPath.toLocaleLowerCase())) : 
+        case (/.(gif)$/.test(parseUrlDataPath.toLocaleLowerCase())) : 
+            getFile(request.url, requestContentType, response);
         break;
-        case (/.(html)$/.test(path.toLocaleLowerCase())) : 
+        case (/.(html)$/.test(parseUrlDataPath.toLocaleLowerCase())) : 
                 renderRoute(request, response);
         break;
         default: renderRoute(request, response);
