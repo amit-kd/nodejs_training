@@ -2,7 +2,7 @@
 
 # Simple Webserver
 
-The simple node application helps to understand user how to start a simple webserver using node js native modules. One can easily run the whole app in browser by `node main` or `node main.js` commands from cmd / terminal.
+The simple node application helps to understand user how to start a simple webserver using node js native modules and try to access files named default, can be either of html / css / js / json / jpg / png / gif file formates in the browser. One can easily run the whole app in browser by `node main` or `node main.js` commands from cmd / terminal.
 
 # Basic Node js application without framework
 
